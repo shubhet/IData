@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>Valentine 💖</title>
@@ -9,104 +10,59 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, #ff6f91, #ffc3a0); /* UPDATED BG */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
   overflow: hidden;
-}
-
-/* floating hearts & flowers */
-.float {
-  position: absolute;
-  font-size: 26px;
-  animation: rise 10s linear infinite;
-  opacity: 0.7;
-}
-
-@keyframes rise {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
 }
 
 .card {
   background: white;
-  border-radius: 30px;
-  width: 90%;
-  max-width: 420px;
-  padding: 25px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-  position: relative;
-  border: 6px double #ff4d6d;
-}
-
-.header {
-  font-size: 26px;
-  color: #ff2e63;
-  margin-bottom: 15px;
-}
-
-.flowers {
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-
-.image-box img {
-  width: 100%;
+  padding: 30px;
   border-radius: 20px;
-  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 350px;
+  position: relative;
 }
 
-.buttons {
-  position: relative;
-  height: 70px;
+h1 {
+  color: #ff4d6d;
+  margin-bottom: 25px;
 }
 
 button {
-  padding: 12px 26px;
+  padding: 12px 25px;
   font-size: 16px;
   border: none;
-  border-radius: 30px;
+  border-radius: 25px;
   cursor: pointer;
 }
 
 .yes {
-  background: #ff2e63;
+  background: #ff4d6d;
   color: white;
 }
 
 .no {
-  background: #eee;
+  background: #ddd;
   position: absolute;
-  left: 180px;
-  top: 0;
+  left: 20px;
+  top: 120px;
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- Floating decorations -->
-<div class="float" style="left:10%">🌹</div>
-<div class="float" style="left:25%; animation-delay:2s;">💖</div>
-<div class="float" style="left:45%; animation-delay:4s;">🌸</div>
-<div class="float" style="left:65%; animation-delay:1s;">❤️</div>
-<div class="float" style="left:85%; animation-delay:3s;">💐</div>
-
 <div class="card">
-  <div class="header">💘 Ishika, will you be my Valentine? 💘</div>
-
-  <div class="flowers">🌹🌸💐🌷🌹</div>
-
-  <div class="image-box">
-    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Cute couple">
-  </div>
-
-  <div class="buttons">
-    <button class="yes" onclick="yesClick()">Yes ❤️</button>
-    <button class="no" id="noBtn">No 😢</button>
-  </div>
+  <h1>💘 Ishika, will you be my Valentine? 💘</h1>
+  <button class="yes" onclick="yesClick()">Yes ❤️</button>
+  <button class="no" id="noBtn">No 😢</button>
 </div>
 
 <script>
@@ -115,7 +71,7 @@ const card = document.querySelector(".card");
 
 function randomMove() {
   const maxX = card.clientWidth - noBtn.offsetWidth;
-  const maxY = 40;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -124,7 +80,7 @@ function randomMove() {
   noBtn.style.top = y + "px";
 }
 
-setInterval(randomMove, 600);
+setInterval(randomMove, 700);
 
 function yesClick() {
   document.body.innerHTML = `
@@ -134,21 +90,18 @@ function yesClick() {
     justify-content:center;
     align-items:center;
     height:100vh;
-    background:linear-gradient(135deg,#ff758c,#ff7eb3);
-    text-align:center;
+    background:linear-gradient(135deg,#ff6f91,#ffc3a0);
     color:white;
+    text-align:center;
     padding:20px;
   ">
-    <h1 style="font-size:32px;">💖 Yayyy Ishika bby! I knew it 😍💖</h1>
+    <h1>💖 Yayyy Ishika bby! I knew it 😍💖</h1>
 
-    <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif"
-      style="width:260px; border-radius:25px; margin:20px;"
-      alt="Boy kissing girl">
-
-    <h2>💋 Come here Valentine 💋</h2>
-    <p style="font-size:20px;">You just stole my heart forever ❤️</p>
-
-    <div style="font-size:28px;">🌹💐❤️🌸💖</div>
+    <img
+      src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"
+      alt="Cute couple kiss"
+      style="width:260px; margin-top:20px; border-radius:20px;"
+    >
   </div>`;
 }
 </script>
