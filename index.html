@@ -1,193 +1,139 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <title>Valentine 💖</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
 body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-margin: 0;
+/* floating hearts & flowers */
+.floating {
+  position: absolute;
+  font-size: 24px;
+  animation: float 8s linear infinite;
+  opacity: 0.7;
+}
 
-height: 100vh;
-
-background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-
-display: flex;
-
-justify-content: center;
-
-align-items: center;
-
-font-family: Arial, sans-serif;
-
-overflow: hidden;
-
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-10vh);
+  }
 }
 
 .card {
-
-background: white;
-
-padding: 30px;
-
-border-radius: 20px;
-
-text-align: center;
-
-box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-
-width: 90%;
-
-max-width: 350px;
-
-position: relative;
-
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 360px;
+  position: relative;
+  border: 6px solid #ffb3c1;
 }
 
 h1 {
-
-color: #ff4d6d;
-
-margin-bottom: 25px;
-
+  color: #ff4d6d;
+  margin-bottom: 25px;
 }
 
 button {
-
-padding: 12px 25px;
-
-font-size: 16px;
-
-border: none;
-
-border-radius: 25px;
-
-cursor: pointer;
-
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .yes {
-
-background: #ff4d6d;
-
-color: white;
-
+  background: #ff4d6d;
+  color: white;
+  margin-right: 10px;
 }
 
 .no {
-
-background: #ddd;
-
-position: absolute;
-
-left: 20px;
-
-top: 120px;
-
+  background: #ddd;
+  position: absolute;
+  left: 20px;
+  top: 140px;
 }
-
 </style>
-
 </head>
 
 <body>
 
+<!-- floating decorations -->
+<div class="floating" style="left:10%; animation-delay:0s;">🌸</div>
+<div class="floating" style="left:30%; animation-delay:2s;">💖</div>
+<div class="floating" style="left:50%; animation-delay:4s;">🌹</div>
+<div class="floating" style="left:70%; animation-delay:1s;">💐</div>
+<div class="floating" style="left:90%; animation-delay:3s;">❤️</div>
 
 <div class="card">
-
-<h1>💘 Ishika, will you be my Valentine? 💘</h1>
-
-<button class="yes" onclick="yesClick()">Yes ❤️</button>
-
-<button class="no" id="noBtn">No 😢</button>
-
+  <h1>💘 Ishika, will you be my Valentine? 💘</h1>
+  <button class="yes" onclick="yesClick()">Yes ❤️</button>
+  <button class="no" id="noBtn">No 😢</button>
 </div>
 
-
 <script>
-
 const noBtn = document.getElementById("noBtn");
-
 const card = document.querySelector(".card");
 
-
 function randomMove() {
+  const maxX = card.clientWidth - noBtn.offsetWidth;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
 
-const maxX = card.clientWidth - noBtn.offsetWidth;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
 
-const maxY = card.clientHeight - noBtn.offsetHeight;
-
-
-const x = Math.random() * maxX;
-
-const y = Math.random() * maxY;
-
-
-noBtn.style.left = x + "px";
-
-noBtn.style.top = y + "px";
-
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 }
-
-
-// No button keeps moving
 
 setInterval(randomMove, 700);
 
-
 function yesClick() {
+  document.body.innerHTML = `
+  <div style="
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    color:white;
+    text-align:center;
+    padding:20px;
+  ">
+    <h1>💖 Yayyy Ishika bby! I knew it 😍💖</h1>
 
-document.body.innerHTML = `
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
+      style="width:240px; border-radius:20px; margin:15px;">
 
-<div style="
+    <img src="https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif"
+      style="width:220px; border-radius:20px; margin:10px;">
 
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-height:100vh;
-
-background:#ff9a9e;
-
-color:white;
-
-text-align:center;
-
-padding:20px;
-
-">
-
-<h1>💖 Yayyy Ishika bby! I knew it 😍💖</h1>
-
-<img
-
-src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
-
-alt="Dancing girl"
-
-style="width:250px; margin-top:20px; border-radius:20px;"
-
->
-
-</div>`;
-
+    <p style="font-size:20px; margin-top:15px;">
+      🌹 Happy Valentine’s Day 🌹<br>
+      You just made my heart melt 💕
+    </p>
+  </div>`;
 }
-
 </script>
 
-
 </body>
-
 </html>
